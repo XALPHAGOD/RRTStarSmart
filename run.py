@@ -5,21 +5,51 @@ from RRTStarSmart import RRTStarSmart
 
 def main():
     map = Map(length=960, height=540, caption="RRT* Smart")
-    map.add_obstacle(RectangleObstacle(top=540, bottom=285, left=450, right=510))
-    # map.add_obstacle(RectangleObstacle(top=255, bottom=0, left=450, right=510))
-    map.add_obstacle(RectangleObstacle(top=405, bottom=135, left=370, right=430))
-    map.add_obstacle(RectangleObstacle(top=405, bottom=135, left=530, right=590))
-    # map.add_obstacle(CircleObstacle(x=20, y=40, radius=10))
-    # map.add_obstacle(CircleObstacle(x=200, y=240, radius=80))
-    # map.add_obstacle(CircleObstacle(x=420, y=370, radius=150))
-    # map.add_obstacle(CircleObstacle(x=900, y=440, radius=30))
+    # Course 1
+    # map.add_obstacle(RectangleObstacle(top=540, bottom=290, left=450, right=510))
+    # map.add_obstacle(RectangleObstacle(top=250, bottom=0, left=450, right=510))
+    # map.add_obstacle(RectangleObstacle(top=405, bottom=135, left=350, right=410))
+    # map.add_obstacle(RectangleObstacle(top=405, bottom=135, left=550, right=610))
+    # start = Point(pos=(100, 100), color=(20, 252, 3), pointSize=7)
+    # end = Point(pos=(860, 440), color=(252, 3, 3), pointSize=7)
+    # map.add_obstacle(CircleObstacle(x=20, y=40, radius=20))
+    # Course 2
+    map.add_obstacle(RectangleObstacle(top=500, bottom=100, left=700, right=800))
+    map.add_obstacle(RectangleObstacle(top=350, bottom=300, left=450, right=700))
+    map.add_obstacle(RectangleObstacle(top=240, bottom=200, left=800, right=900))
+    start = Point(pos=(480, 270), color=(20, 252, 3), pointSize=7)
+    end = Point(pos=(820, 470), color=(252, 3, 3), pointSize=7)
+    # Course 3
+    # map.add_obstacle(RectangleObstacle(top=500, bottom=430, left=465, right=800))
+    # map.add_obstacle(RectangleObstacle(top=380, bottom=310, left=160, right=495))
+    # map.add_obstacle(RectangleObstacle(top=260, bottom=190, left=465, right=800))
+    # map.add_obstacle(RectangleObstacle(top=140, bottom=70, left=160, right=495))
+    # start = Point(pos=(480, 520), color=(20, 252, 3), pointSize=7)
+    # end = Point(pos=(480, 50), color=(252, 3, 3), pointSize=7)
 
-    start = Point(pos=(100, 100), color=(20, 252, 3), pointSize=7)
-    end = Point(pos=(860, 440), color=(252, 3, 3), pointSize=7)
-    rrtstarsmart = RRTStarSmart(map=map, start=start, end=end)
+    rrtstarsmart = RRTStarSmart(map=map, start=start, end=end, iterations=1e4)
     while map.window_open:
         rrtstarsmart.plan()
-        map.add_geometry(nodes=rrtstarsmart.nodes, lines=rrtstarsmart.lines)
+        finalPath = rrtstarsmart.finalPath
+        final = []
+        for i in range(len(finalPath) - 1):
+            final.append(
+                Line(
+                    start=finalPath[i],
+                    end=finalPath[i + 1],
+                    color=(0, 220, 0),
+                    lineWidth=3,
+                )
+            )
+        lines = []
+        for node in rrtstarsmart.nodes:
+            if node.parent is not None:
+                lines.append(Line(start=node.parent.point.pos, end=node.point.pos))
+        map.add_geometry(
+            nodes=rrtstarsmart.nodes,
+            lines=lines,
+            final=final,
+        )
         map.render()
 
 

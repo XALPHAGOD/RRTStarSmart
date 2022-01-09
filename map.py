@@ -19,10 +19,12 @@ class Map(Viewer):
         self.end = None
         self.nodes = []
         self.lines = []
+        self.final = []
 
-    def add_geometry(self, nodes=[], lines=[]):
+    def add_geometry(self, nodes=[], lines=[], final=[]):
         self.nodes = nodes
         self.lines = lines
+        self.final = final
 
     def add_obstacle(self, obs):
         self.obstacles.append(obs)
@@ -48,6 +50,9 @@ class Map(Viewer):
                 )
 
         for line in self.lines:
+            line.render()
+
+        for line in self.final:
             line.render()
 
         for node in self.nodes:

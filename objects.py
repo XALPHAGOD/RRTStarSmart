@@ -22,7 +22,7 @@ except ImportError as err:
 
 
 class Point:
-    def __init__(self, pos=(100, 100), color=(0, 0, 0), pointSize=3):
+    def __init__(self, pos=(100, 100), color=(0, 0, 0), pointSize=2):
         self.pos = pos
         self.x = pos[0]
         self.y = pos[1]
@@ -36,14 +36,17 @@ class Point:
         glVertex2d(*self.pos)
         glEnd()
 
-    def equal(self, other):
+    def __equal__(self, other):
         return self.x == other.x and self.y == other.y
 
-    def add(self, other):
-        return Point(self.x + other.x, self.y + other.y)
+    def __add__(self, other):
+        return Point(pos=(self.x + other.x, self.y + other.y))
 
     def dist(self, other):
         return math.sqrt(math.pow(self.x - other.x, 2) + math.pow(self.y - other.y, 2))
+
+    def dir(self, other):
+        return math.atan2(other.y - self.y, other.x - self.x)
 
 
 class Line:
