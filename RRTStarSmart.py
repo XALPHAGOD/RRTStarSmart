@@ -28,8 +28,8 @@ class RRTStarSmart:
         iterations=2000,
         epsilon=0.2,
         stepSize=10,
-        biasingRadius=40,
-        biasingRatio=4,
+        biasingRadius=50,
+        biasingRatio=5,
         gamma=30.0,
     ):
         self.map = map

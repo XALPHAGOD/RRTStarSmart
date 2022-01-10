@@ -22,7 +22,7 @@ except ImportError as err:
 
 
 class Point:
-    def __init__(self, pos=(100, 100), color=(0, 0, 0), pointSize=2):
+    def __init__(self, pos=(100, 100), color=(0, 0, 0), pointSize=1):
         self.pos = pos
         self.x = pos[0]
         self.y = pos[1]
@@ -50,7 +50,7 @@ class Point:
 
 
 class Line:
-    def __init__(self, start, end, color=(255, 0, 195), lineWidth=1):
+    def __init__(self, start, end, color=(255, 130, 234), lineWidth=1):
         self.start = start
         self.end = end
         self.color = color
