@@ -33,11 +33,11 @@ def main():
     map.add_obstacle(RectangleObstacle(top=390, bottom=210, left=330, right=360))
     map.add_obstacle(RectangleObstacle(top=420, bottom=390, left=330, right=630))
     map.add_obstacle(RectangleObstacle(top=420, bottom=160, left=630, right=660))
-    map.add_obstacle(RectangleObstacle(top=160, bottom=130, left=300, right=660))
-    map.add_obstacle(RectangleObstacle(top=450, bottom=130, left=270, right=300))
-    map.add_obstacle(RectangleObstacle(top=480, bottom=450, left=270, right=700))
+    map.add_obstacle(RectangleObstacle(top=160, bottom=130, left=280, right=660))
+    map.add_obstacle(RectangleObstacle(top=470, bottom=130, left=250, right=280))
+    map.add_obstacle(RectangleObstacle(top=500, bottom=470, left=250, right=700))
     start = Point(pos=(480, 270), color=(20, 252, 3), pointSize=7)
-    end = Point(pos=(700, 500), color=(252, 3, 3), pointSize=7)
+    end = Point(pos=(650, 520), color=(252, 3, 3), pointSize=7)
 
     rrtstarsmart = RRTStarSmart(map=map, start=start, end=end, iterations=1e4)
     while map.window_open:
