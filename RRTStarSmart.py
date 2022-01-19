@@ -1,7 +1,6 @@
 import math
 import random
 import time
-from typing import final
 from objects import *
 import helper
 
@@ -52,8 +51,6 @@ class RRTStarSmart:
         self.nodes.append(Node(point=self.end))
         self.reached = False
         self.target = None
-        self.strtInt = None
-        self.strtIntCnt = 0
 
     def plan(self):
         if len(self.nodes) >= self.iterations:
@@ -128,6 +125,9 @@ class RRTStarSmart:
 
         if len(self.nodes) % 1000 == 0:
             print(len(self.nodes), "iters")
+
+        if len(self.nodes) == self.iterations and self.reached == False:
+            print("Target Not Found")
 
         # time.sleep(0.05)
 

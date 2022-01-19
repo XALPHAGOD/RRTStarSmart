@@ -157,7 +157,7 @@ class RectangleObstacle:
             else:
                 return 0
 
-    def check_collision(self, other, avoidDist=5):
+    def check_collision(self, other, avoidDist=3):
         return self.dist(other) <= avoidDist
 
 
@@ -172,5 +172,5 @@ class CircleObstacle:
     def dist(self, other):
         return max(other.dist(Point(pos=(self.x, self.y))) - self.radius, 0)
 
-    def check_collision(self, other, avoidDist=5):
+    def check_collision(self, other, avoidDist=3):
         return self.dist(other) <= avoidDist
