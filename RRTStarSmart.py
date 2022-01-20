@@ -102,7 +102,6 @@ class RRTStarSmart:
             else:
                 self.reached = True
                 self.n = len(self.nodes)
-                print("Found:", self.n, "nodes")
                 self.target = Node(
                     point=self.end, parent=newNode, cost=newNode.cost + distFromTarget
                 )
@@ -121,7 +120,7 @@ class RRTStarSmart:
                 self.cost = cost
                 self.finalPath = optimizedPath
                 self.beacons = tempFinalPath
-                print("Updated:", self.cost)
+                print("Nodes:", len(self.nodes), "Updated:", self.cost)
 
         if len(self.nodes) % 1000 == 0:
             print(len(self.nodes), "iters")

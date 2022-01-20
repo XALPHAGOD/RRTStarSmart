@@ -14,11 +14,11 @@ def main():
     # end = Point(pos=(860, 440), color=(252, 3, 3), pointSize=7)
     # map.add_obstacle(CircleObstacle(x=20, y=40, radius=20))
     # Course 2
-    # map.add_obstacle(RectangleObstacle(top=500, bottom=100, left=700, right=800))
-    # map.add_obstacle(RectangleObstacle(top=350, bottom=300, left=450, right=700))
-    # map.add_obstacle(RectangleObstacle(top=240, bottom=200, left=800, right=900))
-    # start = Point(pos=(480, 270), color=(20, 252, 3), pointSize=7)
-    # end = Point(pos=(820, 460), color=(252, 3, 3), pointSize=7)
+    map.add_obstacle(RectangleObstacle(top=500, bottom=100, left=600, right=700))
+    map.add_obstacle(RectangleObstacle(top=350, bottom=300, left=350, right=600))
+    map.add_obstacle(RectangleObstacle(top=240, bottom=200, left=700, right=800))
+    start = Point(pos=(380, 270), color=(20, 252, 3), pointSize=7)
+    end = Point(pos=(720, 460), color=(252, 3, 3), pointSize=7)
     # Course 3
     # map.add_obstacle(RectangleObstacle(top=500, bottom=430, left=465, right=800))
     # map.add_obstacle(RectangleObstacle(top=380, bottom=310, left=160, right=495))
@@ -52,10 +52,10 @@ def main():
     # map.add_obstacle(RectangleObstacle(top=540, bottom=250, left=600, right=650))
     # map.add_obstacle(RectangleObstacle(top=290, bottom=0, left=700, right=750))
     # map.add_obstacle(RectangleObstacle(top=540, bottom=250, left=800, right=850))
-    start = Point(pos=(50, 50), color=(20, 252, 3), pointSize=7)
-    end = Point(pos=(910, 490), color=(252, 3, 3), pointSize=7)
+    # start = Point(pos=(50, 50), color=(20, 252, 3), pointSize=7)
+    # end = Point(pos=(910, 490), color=(252, 3, 3), pointSize=7)
 
-    rrtstarsmart = RRTStarSmart(map=map, start=start, end=end, iterations=5 * 1e3)
+    rrtstarsmart = RRTStarSmart(map=map, start=start, end=end, iterations=1e4)
     while map.window_open:
         rrtstarsmart.plan()
         finalPath = rrtstarsmart.finalPath
